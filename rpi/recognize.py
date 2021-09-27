@@ -1,8 +1,12 @@
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
+import torchvision
 
 from time import sleep
 
-# Disable warnings (optional)
+low_res = torchvision.models.detection.fasterrcnn_mobilenet_v3_large_320_fpn(pretrained=True)
+
+
+"""# Disable warnings (optional)
 GPIO.setwarnings(False)
 # Select GPIO mode
 GPIO.setmode(GPIO.BCM)
@@ -17,3 +21,5 @@ while True:
     GPIO.output(buzzer, GPIO.LOW)
     print("No Beep")
     sleep(0.5)
+
+"""
