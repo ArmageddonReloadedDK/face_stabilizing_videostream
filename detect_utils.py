@@ -1,7 +1,7 @@
 import torchvision.transforms as transforms
 import cv2
 import numpy as np
-from coco_names import COCO_INSTANCE_CATEGORY_NAMES as coco_names
+from coco_names import coco_names
 
 # this will help us create a different color for each class
 COLORS = np.random.uniform(0, 255, size=(len(coco_names), 3))
@@ -41,26 +41,3 @@ def draw_boxes(boxes, classes, labels, image):
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2,
                     lineType=cv2.LINE_AA)
     return image
-
-
-def grid(image, nx, ny):
-    shape = image.shape
-    x_step = shape[0] // nx
-    y_step = shape[1] // ny
-    grid = np.zeros(shape)
-
-    label = 0
-    flag = True
-    x = 0
-    y = 0
-    while flag:
-        while x < (label + 1) * x_step:
-            grid[x, y] = label
-            x+=1
-            if x%x_step==0:
-                x=label*x_step
-                y+=1
-                if y%y_step==0:
-                    label
-
-
